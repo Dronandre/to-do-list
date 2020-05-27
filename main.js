@@ -103,8 +103,7 @@ function addElement(task) {
 	// Добавляем data атрибут
 	deleteBtn.dataset.action = "delete";
 	// Помещаем кнопку внутрь тега li
-	newElement.appendChild(deleteBtn);
-    console.log("addItem -> newElement", newElement);
+	newElement.appendChild(deleteBtn);    
     // Добавляем новую задачу в список со всеми задачами
     itemsList.prepend(newElement);        
 }
