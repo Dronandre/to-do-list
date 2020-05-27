@@ -2,11 +2,15 @@ var form = document.getElementById("addForm");
 var itemsList = document.getElementById("items");
 var filter = document.getElementById("filter");
 
-if (toDoList!=[]) {
-    getLocalStorage(); 
-    toDoList.forEach(item =>  addElement(item));    
-} else {
-    var toDoList = [];
+let toDoList = [];
+checlLS();
+
+// Проверка на наличие данных в LS
+function checlLS(){
+	let dataLS = localStorage.getItem('toDoList');
+	if(dataLS){
+		toDoList = JSON.parse(dataLS);
+	}
 }
 
 // Добавление новой задачи прослушка события
@@ -80,9 +84,8 @@ function filterItems(e) {
 	});
 }
 
-function getLocalStorage() {    
-    toDoList  = JSON.parse(localStorage.getItem("toDoList"));  
-}
+
+toDoList.forEach(item =>  addElement(item));  
 
 function addElement(task) {    
 	// Создаем элемент для новой задачи
